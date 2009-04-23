@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+{% load webdesign%}
+{% load typographus%}
+{% block content %}
+
+<dl>
+    <dt>2009-04-21</dt>
+    <dd>{%lorem%}</dd>
+</dl>
+{%lorem%}
+<h1>Прайс</h1>
+<h2>Sanyo</h2>
+<table>
+    <tr>
+    <td><img src="http://i029.radikal.ru/0903/0d/f5d84e5fe72et.jpg"/><br/>
+            <h4>PDG-DSU21</h4>
+            <p>
+            2300&nbsp;ANSI lm&nbsp;800&times;600&nbsp;Контрастность 2000:1. SXGA, XGA, SVGA,VGA. Входы: VGA, S-Video, композитный, Audio (Mini-Jack), USB, RS232. ZOOM 1,07&nbsp;Коррекция трапеции ?15&#176;. Вес 3&nbsp;кг.
+            </p>
+            <h5>771 $</h5>
+    </td>
+    <td><img src="http://i029.radikal.ru/0903/0d/f5d84e5fe72et.jpg"/><br/>
+            <h4>PDG-DSU21</h4>
+            {% filter typographus %}
+            <p>2300 ANSI lm 800x600 Контрастность 2000:1. SXGA, XGA, SVGA,VGA. Входы: VGA, S-Video, композитный, Audio (Mini-Jack), USB, RS232. ZOOM 1.07 Коррекция трапеции ±15°. Вес 3 кг.</p>
+            <h5>771 $</h5>
+            {%endfilter%}
+    </td>
+    <td><img src="http://i029.radikal.ru/0903/0d/f5d84e5fe72et.jpg"/><br/>
+            <h4>PDG-DSU21</h4>
+            <p>2300 ANSI lm 800x600 Контрастность 2000:1. SXGA, XGA, SVGA,VGA. Входы: VGA, S-Video, композитный, Audio (Mini-Jack), USB, RS232. ZOOM 1,07 Коррекция трапеции ±15°. Вес 3 кг.</p>
+            <h5>771 $</h5>
+    </td>
+</tr>
+</table>
+<h2>Optoma</h2>
+<table>
+    <tr>
+        <td><img src="http://s39.radikal.ru/i084/0904/b7/934699893f8ct.jpg"/></td>
+        <td><h3>EP761</h3>
+            <p>3200 ANSI lm 1024x768 6-сегментное цветовое колесо. 4:3 (поддерживается 16:9), меню на русском языке, контрастность 2200:1. Входы: 2 x VGA, DVI, S-Video, композитный, RS-232, USB, аудио. Выходы: VGA, аудио. 1 динамик х 2 Вт. 27 дБ, 2,9 кг</p>
+            <h4>1486 $ </h4>
+        </td>
+    </tr>
+</table>
+{% endblock%}
