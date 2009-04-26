@@ -1,8 +1,16 @@
 from django.db import models
 
 def wiki2html(text):
-    from creoleparser import text2html
+    from poly_art.creoleparser import text2html
     return text2html( text, method='xhtml' )
+def typograf(text):
+    from typographus import typographus
+    return typographus.typo( text )
+
+def make_text(text):
+    text = wiki2html( text ) 
+    #text = typograf(text)
+    return text 
 
 def title2slug(text):
     import pytils
@@ -13,10 +21,15 @@ class Section(models.Model):
     slug = models.SlugField(blank=True)
     body_wiki = models.TextField(blank=True)
     body_html = models.TextField(blank=True, editable=False)
-    position = models.IntegerField(blank=True)
+    position = models.IntegerField(default=0)
     parent = models.ForeignKey('self', null=True, blank=True)
     def __unicode__(self):
         return self.name
+    def save(self):
+        self.body_html = make_text(self.body_wiki)
+        self.slug = title2slug( self.name)
+        super(Section, self).save()
+
 
 
 class Page(models.Model):
@@ -29,6 +42,10 @@ class Page(models.Model):
     date_update = models.DateTimeField( auto_now=True, auto_now_add=True)
     def __unicode__(self):
         return self.title
+    def save(self):
+        self.body_html = make_text(self.body_wiki)
+        self.slug = title2slug( self.title[:45])
+        super(Page, self).save()
 
 class News(models.Model):
     title = models.CharField( max_length=140)
@@ -39,7 +56,7 @@ class News(models.Model):
     def __unicode__(self):
         return self.title
     def save(self):
-        self.body_html = wiki2html(self.body_wiki)
+        self.body_html = make_text(self.body_wiki)
         self.slug = title2slug( self.title)
         super(News, self).save()
 
@@ -75,6 +92,10 @@ class Manufacturer(models.Model):
     parent = models.ForeignKey('self', null=True, blank=True)
     def __unicode__(self):
         return self.name
+    def save(self):
+        self.body_html = make_text(self.body_wiki)
+        self.slug = title2slug( self.name)
+        super(Manufacturer, self).save()
 
 class TypeProduct(models.Model):
     name = models.CharField( max_length = 50)
@@ -83,8 +104,12 @@ class TypeProduct(models.Model):
     body_html = models.TextField()
     image_ext_url = models.URLField(blank=True)
     image_ext_url_thumb = models.URLField(blank=True)
-    position = models.IntegerField(blank=True)
+    position = models.IntegerField(default=0)
     parent = models.ForeignKey('self', null=True, blank=True)
     def __unicode__(self):
         return self.name
+    def save(self):
+        self.body_html = make_text(self.body_wiki)
+        self.slug = title2slug( self.name)
+        super(TypeProduct, self).save()
 # Create your models here.

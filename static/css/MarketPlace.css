@@ -378,6 +378,10 @@ ul.sidemenu li a:hover {
 	color: #383d44;
 	border: none;
 }
+ul.sidemenu li ul{
+/*    display: none;*/
+    padding-left: 1px;
+}
 
 /* footer-wrap */
 #footer-wrap {
@@ -447,3 +451,7 @@ ul.sidemenu li a:hover {
 	margin: 0 10px 0 5px;	
 }
 
+/* content */
+#main p {
+    text-indent: 20px;
+}

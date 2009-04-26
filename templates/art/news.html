@@ -2,11 +2,16 @@
 {% load webdesign%}
 {% load typographus%}
 {% load pytils_dt%}
+{% block title %}
+Новости
+{% endblock %}
 {% block content_title %}
 Новости
 {% endblock %}
 {% block content %}
 <table>
+    <col />
+    <col width="120" />
     {% for n in news %}
     <tr><th><h2>{{ n.title }}</h2></th><td align="right"><h5>{{n.date_add|ru_strftime:"%d %B %Y"}}</h5></td></tr>
     <tr><td colspan="2">

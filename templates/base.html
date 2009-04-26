@@ -3,7 +3,7 @@
 
 <head>
 
-<meta name="Description" content="Политехник Art. Все для организации свадъб." />
+<meta name="Description" content="Политехник Art.  Аренда проекторов, проектор для свадьбы" />
 <meta name="Keywords" content="свадьба, проектор, слайды, экраны" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Distribution" content="SPb" />
@@ -13,6 +13,22 @@
 <link rel="stylesheet" href="/static/css/MarketPlace.css" type="text/css" />
 
 <title>Политехник Art - {% block title %}Новости{% endblock%}</title>
+
+
+<script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+        $("ul.sidemenu li").click(function(){
+            $(this).find("ul").toggle('slide');
+            $(this).find("ul").find("li").mouseout( function() {
+                $(this).find("ul").hide('slide');
+            });
+        });
+        //{% block js %}
+
+        //{% endblock %}
+});
+</script>
 
 </head>
 
@@ -47,11 +63,12 @@
 	<!-- navigation starts-->	
 	<div  id="nav">
 		<ul>
-			<li id="current"><a href="#">Новости</a></li>
-			<li><a href="#">Архив</a></li>			
-			<li><a href="#">Сервис</a></li>
-			<li><a href="#">Поддержка</a></li>
-			<li><a href="#">О нас</a></li>		
+			<li id="current"><a href="{% url art.views.main %}">О компании</a></li>
+			<li><a href="{% url art.views.news %}">Новости</a></li>			
+			<li><a href="#{# url art.views.price #}">Прайс-лист</a></li>			
+			<li><a href="#">Заявки</a></li>			
+			<li><a href="#">Партнеры</a></li>			
+			<li><a href="#">Контакты</a></li>			
 		</ul>
 	<!-- navigation ends-->	
 	</div>					
@@ -60,24 +77,29 @@
 	<div id="content-wrap" class="two-col"  >	
 	
 		<div id="sidebar">
-			<h1>Sidebar Menu</h1>
 			<ul class="sidemenu">				
-				<li><a href="index.html">Home</a></li>
-				<li><a href="#TemplateInfo">Template Info</a></li>
-				<li><a href="#SampleTags">Sample Tags</a></li>
-				<li><a href="http://www.styleshout.com/">More Free Templates</a></li>	
-				<li><a href="http://www.4templates.com/?aff=ealigam">Premium Templates</a></li>	
+                <li><a href="#">Техническое оборудование</a>
+                <ul>
+                    <li><a href="#">Видеопроекторы</a></li>
+                    <li><a href="#">Экраны</a></li>
+                    <li><a href="#">Звук</a></li>
+                    <li><a href="#">Свет</a></li>
+                    <li><a href="#">Другое оборудование</a></li>
+                </ul>
+                </li>
+                <li><a href="#">Слайд-шоу на DVD для свадьбы</a>
+                    <ul>
+                        <li><a href="#">lovestory</a></li>
+                        <li><a href="#">Родители</a></li>
+                        <li><a href="#">Фотошутки</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Необычные подарки</a></li>
+                        
             </ul>	
-            <h1>
-            {% block slidebar_price_title%}
-            Проекторы
+            {% block sidebar_price_title%}
             {%endblock%}
-            </h1>
-            {% block slidebar_price %}
-			<ul>				
-				<li><a href="#">Sanyo</a></li>
-				<li><a href="#">Optoma</a></li>
-            </ul>	
+            {% block sidebar_price %}
             {% endblock %}
 
 		<!-- sidebar ends -->		
