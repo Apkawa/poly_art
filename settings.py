@@ -2,6 +2,9 @@
 import os
 pwd = os.sys.path[0]
 pathsep = os.path.sep
+#os.sys.path += (pwd+'/pylib/creoleparser',)
+
+
 
 
 DEBUG = True
@@ -67,12 +70,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'poly_art.urls'
 
 TEMPLATE_DIRS = (
     pwd+pathsep+'templates',
+    '/usr/lib/python2.6/site-packages/debug_toolbar/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -88,5 +93,8 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
     #'poly_art.art.templatetags',
     'poly_art.art',
-    'poly_art.pytils',#datetimie on russian
+    'pytils',#datetimie on russian
+    #'debug_toolbar',
 )
+# debug_toolbar
+INTERNAL_IPS = ('127.0.0.1',)

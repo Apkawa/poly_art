@@ -1,20 +1,21 @@
 {% extends "base.html"%}
 {% load webdesign%}
 {% load typographus%}
-
+{% with  section.name as section_name %}
 {% block title %}
-{{ section.name }}
+{{ section_name }}
 {% endblock %}
 
 {% block js %}
     //$("tr:nth-child(row-a)").addClass("row-a");
 {% endblock %}
 {% block content_title %}
-{{ section.name }}
+{{ section_name }}
 {% endblock %}
 {% block sidebar_price_title %}
-<h5>{{ section.name }}</h5>
+<h5>{{ section_name }}</h5>
 {%endblock%}
+{% endwith %}
 {% block sidebar_price %}
 <ul>
 {% for manuf in manufs %}

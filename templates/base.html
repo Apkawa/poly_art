@@ -1,3 +1,4 @@
+{%load menu%}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -18,12 +19,12 @@
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-        $("ul.sidemenu li").click(function(){
-            $(this).find("ul").toggle('slide');
-            $(this).find("ul").find("li").mouseout( function() {
-                $(this).find("ul").hide('slide');
-            });
-        });
+        //$("ul.sidemenu li").click(function(){
+        //    $(this).find("ul").toggle('slide');
+        //    $(this).find("ul").find("li").mouseout( function() {
+        //        $(this).find("ul").hide('slide');
+        //    });
+        //});
         //{% block js %}
 
         //{% endblock %}
@@ -77,26 +78,10 @@ $(document).ready(function(){
 	<div id="content-wrap" class="two-col"  >	
 	
 		<div id="sidebar">
-			<ul class="sidemenu">				
-                <li><a href="#">Техническое оборудование</a>
-                <ul>
-                    <li><a href="#">Видеопроекторы</a></li>
-                    <li><a href="#">Экраны</a></li>
-                    <li><a href="#">Звук</a></li>
-                    <li><a href="#">Свет</a></li>
-                    <li><a href="#">Другое оборудование</a></li>
-                </ul>
-                </li>
-                <li><a href="#">Слайд-шоу на DVD для свадьбы</a>
-                    <ul>
-                        <li><a href="#">lovestory</a></li>
-                        <li><a href="#">Родители</a></li>
-                        <li><a href="#">Фотошутки</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Необычные подарки</a></li>
-                        
-            </ul>	
+            <ul class="sidemenu">
+                {% main_right_menu %}
+            </ul>
+
             {% block sidebar_price_title%}
             {%endblock%}
             {% block sidebar_price %}

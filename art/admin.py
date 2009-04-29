@@ -5,7 +5,10 @@ admin.site.register(News)
 admin.site.register( Product)
 admin.site.register( Page)
 admin.site.register( Currency)
-admin.site.register( Section)
+
+class SectionAdmin(admin.ModelAdmin):
+    list_display = [ 'name','parent','position']
+admin.site.register( Section, SectionAdmin )
 admin.site.register( Manufacturer)
 admin.site.register( TypeProduct)
 

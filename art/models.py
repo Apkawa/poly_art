@@ -1,7 +1,7 @@
 from django.db import models
 
 def wiki2html(text):
-    from poly_art.creoleparser import text2html
+    from creoleparser import text2html
     return text2html( text, method='xhtml' )
 def typograf(text):
     from typographus import typographus
