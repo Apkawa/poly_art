@@ -19,16 +19,19 @@
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-        //$("ul.sidemenu li").click(function(){
-        //    $(this).find("ul").toggle('slide');
-        //    $(this).find("ul").find("li").mouseout( function() {
-        //        $(this).find("ul").hide('slide');
-        //    });
-        //});
-        //{% block js %}
+        $("ul.si_demenu li").hover(
+            function(){
+                $(this).find("ul:first").slideDown();
+            },
+            function(){
+                $(this).find("ul:first").slideUp("fast");
+            }
+            );
+        });
+        //$("a[@href$=" + document.location.pathname + "]").parent().addId('current');
+        {% block js %}
 
         //{% endblock %}
-});
 </script>
 
 </head>
@@ -64,7 +67,7 @@ $(document).ready(function(){
 	<!-- navigation starts-->	
 	<div  id="nav">
 		<ul>
-			<li id="current"><a href="{% url art.views.main %}">О компании</a></li>
+			<li><a href="{% url art.views.main %}">О компании</a></li>
 			<li><a href="{% url art.views.news %}">Новости</a></li>			
 			<li><a href="#{# url art.views.price #}">Прайс-лист</a></li>			
 			<li><a href="#">Заявки</a></li>			

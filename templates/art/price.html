@@ -1,21 +1,19 @@
 {% extends "base.html"%}
 {% load webdesign%}
 {% load typographus%}
-{% with  section.name as section_name %}
 {% block title %}
-{{ section_name }}
+{{ section.name }}
 {% endblock %}
 
 {% block js %}
     //$("tr:nth-child(row-a)").addClass("row-a");
 {% endblock %}
 {% block content_title %}
-{{ section_name }}
+{{ section.name }}
 {% endblock %}
 {% block sidebar_price_title %}
-<h5>{{ section_name }}</h5>
+<h5>{{ section.name }}</h5>
 {%endblock%}
-{% endwith %}
 {% block sidebar_price %}
 <ul>
 {% for manuf in manufs %}
@@ -32,8 +30,11 @@
     </tr>
     {% for product in manuf.product_set.all %}
     <tr>
-        <td><img src="{{ product.image_ext_url_thumb }}" alt="{{ product.name }}"/></td>
-        <td><h3>{{ product.name }}</h3>
+        <td>
+            <p><img src="{{ product.image_ext_url_thumb }}" alt="{{ product.name }}"/></p>
+        </td>
+        <td>
+            <h3>{{ product.name }}</h3>
             <p>{{ product.desc }}</p>
             <h5 class="align-right">{{ product.cell }} {{ product.currency.display }}</h5>
         </td>

@@ -383,6 +383,34 @@ ul.sidemenu li ul{
     padding-left: 1px;
 }
 
+/*vertical menu */
+.vert-menu {}
+ul.vert-menu {
+    margin: 10px;
+    padding: 0;
+    list-style: none;
+    width: 180px;
+}
+ul.vert-menu li{
+    display: block;
+    position: relative;
+    border-bottom: 1px solid #E5E5E5;
+}
+ul.vert-menu li ul{
+    position: absolute;
+    left: 149px;
+    width: 180px;
+    top: -5px;
+    display: none;
+    list-style: none;
+	background: #fff;
+}
+ul.vert-menu li a {
+    display: block;
+}
+ul.vert-menu li ul li a {
+    display: block;
+}
 /* footer-wrap */
 #footer-wrap {
 	clear: both;

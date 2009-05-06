@@ -2,7 +2,7 @@
 import os
 pwd = os.sys.path[0]
 pathsep = os.path.sep
-#os.sys.path += (pwd+'/pylib/creoleparser',)
+os.sys.path += (pwd+'/pylib',)
 
 
 
