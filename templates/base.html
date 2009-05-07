@@ -17,8 +17,16 @@
 
 
 <script type="text/javascript" src="/static/js/jquery.js"></script>
+<script type="text/javascript" src="/static/js/jquery.jqDock.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
+    $(document).ready(function(){
+            $(".imenu").hover(
+                function(){
+                //$(this).
+                }
+                );
+
+
         $("ul.si_demenu li").hover(
             function(){
                 $(this).find("ul:first").slideDown();
@@ -29,10 +37,30 @@ $(document).ready(function(){
             );
         });
         //$("a[@href$=" + document.location.pathname + "]").parent().addId('current');
-        {% block js %}
+        //{% block js %}
 
         //{% endblock %}
 </script>
+
+<style type="text/css" media="screen">
+    #header-logo{
+     margin-left: 35px;
+     padding-top: 5px;
+     color: #444;
+    }
+    #slidemenu{
+        text-align: center;
+    }
+    #slidemenu ul {
+        list-style: none;
+    }
+    #slidemenu ul li{
+        margin-left: 5px;
+        margin-top: 5px;
+        float: left;
+    }
+    
+</style>
 
 </head>
 
@@ -42,29 +70,32 @@ $(document).ready(function(){
 <div id="wrap">
 
 	<!--header -->
-        <!--
 	<div id="header">			
+        <div id="header-logo">
+            <a href="#">Политехник Art</a> - прокат оборудования для презентаций
+        </div>
 				
         <div id="header-links">
 		<p>
-			<a href="index.html">Home</a> | 
-			<a href="index.html">Contact</a> | 
-			<a href="index.html">Site Map</a>			
+			<a href="{% url art.views.main %}">О компании</a> | 
+			<a href="{% url art.views.news %}">Новости</a>  | 	
+			<a href="#{# url art.views.price #}">Прайс-лист</a> | 
+            <a href="#">Контакты</a>
 		</p>		
     </div>		
 		
 	</div>
-    -->
 	<!-- header ends -->					
-		
+	<!--	
 	<div id="header-photo">
 	
-		<h1 id="logo-text"><a href="index.html" title="">Политехник Art</a></h1>		
+		<h1 id="logo-text"><a href="index.html" title="...">Политехник Art</a></h1>		
 		<h2 id="slogan">Сделаем Вашу свадьбу веселее.</h2>	
 			
-	</div>		
-			
+    </div>
+    -->
 	<!-- navigation starts-->	
+    <!--
 	<div  id="nav">
 		<ul>
 			<li><a href="{% url art.views.main %}">О компании</a></li>
@@ -74,8 +105,44 @@ $(document).ready(function(){
 			<li><a href="#">Партнеры</a></li>			
 			<li><a href="#">Контакты</a></li>			
 		</ul>
-	<!-- navigation ends-->	
-	</div>					
+</div>	
+-->
+<!-- navigation ends-->	
+    <div id="slidemenu">
+        <ul>
+            </li>
+            <a href="#">
+                <li>
+                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
+                Аренда проекторов
+                </li>
+            </a>
+            </li>
+            <a href="#">
+                <li>
+                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
+                Аренда проекторов
+                </li>
+            </a>
+            </li>
+            <a href="#">
+                <li>
+                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
+                Аренда проекторов
+                </li>
+            </a>
+            </li>
+            <a href="#">
+                <li>
+                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
+                Аренда проекторов
+                </li>
+            </a>
+        </ul>
+        
+    </div>
+    
+			
 			
 	<!-- content-wrap starts -->
 	<div id="content-wrap" class="two-col"  >	

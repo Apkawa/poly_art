@@ -1,9 +1,10 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('',
-        (r'^$','poly_art.art.views.main'),
-        (r'^news/$','poly_art.art.views.news'),
-        (r'^price/([\w-]+)$','poly_art.art.views.price'),
-        (r'^page/([\w-]+)$','poly_art.art.views.page'),
+urlpatterns = patterns('poly_art.art.views',
+        (r'^$','main'),
+        (r'^news/$','news'),
+        (r'^price/([\w-]+)$','price'),
+        (r'^page/([\w-]+)$','page'),
+        (r'^app/$','application'),
 
         )

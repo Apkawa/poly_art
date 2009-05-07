@@ -112,4 +112,19 @@ class TypeProduct(models.Model):
         self.body_html = make_text(self.body_wiki)
         self.slug = title2slug( self.name)
         super(TypeProduct, self).save()
-# Create your models here.
+
+
+class Application( models.Model):
+    '''model for zayavko'''
+    name = models.CharField( max_length=512 )
+    company = models.CharField( max_length=512, blank=True )
+    contact_phone = models.CharField( max_length=45, blank=True )
+    email = models.EmailField()
+    fields_json= models.TextField()
+    fields_human = models.TextField( blank=True )
+    datetime_add = models.DateTimeField( auto_now_add= True)
+
+    sending = models.BooleanField( default=False)
+    datetime_sending = models.DateTimeField( blank=True)
+
+
