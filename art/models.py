@@ -17,12 +17,18 @@ def title2slug(text):
     return pytils.translit.slugify(text)
 
 class Section(models.Model):
+    TYPE = (
+        ('Pr', 'Price'),
+        ('Pa', 'Pages'),
+    )
+
     name = models.CharField( max_length = 50)
     slug = models.SlugField(blank=True)
     body_wiki = models.TextField(blank=True)
     body_html = models.TextField(blank=True, editable=False)
     position = models.IntegerField(default=0)
     parent = models.ForeignKey('self', null=True, blank=True)
+    type_section = models.SlugField(max_length=2, choices=TYPE, blank=True)
     def __unicode__(self):
         return self.name
     def save(self):

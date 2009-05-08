@@ -18,15 +18,23 @@ def price( request, slug=None):
             raise Http404
         products = Product.objects.filter( section = section )
         manufs = Manufacturer.objects.filter( product__section = section).distinct()
-    return render_to_response('art/price.html', {'products': products, 'section':section, 'manufs':manufs})
+        return render_to_response('art/price.html', {'products': products, 'section':section, 'manufs':manufs})
 
 def page( request, slug):
     page = Page.objects.get( slug = slug)
     return render_to_response('art/page.html', {'page':page})
 
+
+def pages( request, slug ):
+    try:
+        section = Section.objects.get(slug = slug, type_section = 'Pa' )
+    except Section.DoesNotExist:
+        raise Http404
+    pages = Page.objects.filter( section = section )
+    return render_to_response('art/pages_in_section.html' , {'pages':pages, 'section':section})
+
+
 from django import forms
-
-
 class ApplicForm(forms.ModelForm):
     text = forms.CharField( widget=forms.Textarea)
 

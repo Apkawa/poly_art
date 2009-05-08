@@ -50,6 +50,7 @@
     }
     #slidemenu{
         text-align: center;
+        margin-left: -15px;
     }
     #slidemenu ul {
         list-style: none;
@@ -59,6 +60,11 @@
         margin-top: 5px;
         float: left;
     }
+    #contact {
+        float: right;
+        text-align: right;
+        margin-right: 22px;
+        }
     
 </style>
 
@@ -72,15 +78,15 @@
 	<!--header -->
 	<div id="header">			
         <div id="header-logo">
-            <a href="#">Политехник Art</a> - прокат оборудования для презентаций
+            <a href="">Политехник Art</a> - прокат оборудования для презентаций
         </div>
 				
         <div id="header-links">
 		<p>
-			<a href="{% url art.views.main %}">О компании</a> | 
+			<a href="{% url art.views.page "o-kompanii" %}">О компании</a> | 
 			<a href="{% url art.views.news %}">Новости</a>  | 	
 			<a href="#{# url art.views.price #}">Прайс-лист</a> | 
-            <a href="#">Контакты</a>
+            <a href="{% url art.views.page "kontaktyi" %}">Контакты</a>
 		</p>		
     </div>		
 		
@@ -111,34 +117,38 @@
     <div id="slidemenu">
         <ul>
             </li>
-            <a href="#">
+            <a href="{% url art.views.price "multimedia-proektoryi"%}">
                 <li>
-                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
+                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
                 Аренда проекторов
                 </li>
             </a>
             </li>
-            <a href="#">
+            <a href="{% url art.views.price "ekranyi"%}">
                 <li>
-                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
-                Аренда проекторов
+                <img src="http://s55.radikal.ru/i150/0904/24/3906d5eb6fc7t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                Аренда экранов
                 </li>
             </a>
             </li>
-            <a href="#">
+            <a href="{% url art.views.price "zvuk"%}">
                 <li>
-                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
-                Аренда проекторов
+                <img src="http://s39.radikal.ru/i086/0902/42/0b8aed035a63t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                Аренда звука
                 </li>
             </a>
             </li>
-            <a href="#">
+            <a href="{% url art.views.price "svet"%}">
                 <li>
-                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" /><br/>
-                Аренда проекторов
+                <img src="http://s47.radikal.ru/i118/0905/98/360b2640b574t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                Аренда света
                 </li>
             </a>
         </ul>
+        <div id="contact">
+        <h1>(812) 458 45 26</h1>
+        <h3><a href="mailto:polytechnik@bk.ru">polytechnik@bk.ru</a></h3>
+        </div>
         
     </div>
     

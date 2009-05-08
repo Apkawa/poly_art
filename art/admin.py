@@ -7,7 +7,7 @@ admin.site.register( Page)
 admin.site.register( Currency)
 
 class SectionAdmin(admin.ModelAdmin):
-    list_display = [ 'name','parent','position']
+    list_display = [ 'name','slug','type_section','parent','position']
 admin.site.register( Section, SectionAdmin )
 
 admin.site.register( Manufacturer)

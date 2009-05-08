@@ -22,7 +22,7 @@
 </ul>
 {%endblock%}
 {% block content %}
-
+{{ section.body_html|safe }}
 <table>
     {% for manuf in manufs %}
     <tr>
