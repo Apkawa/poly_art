@@ -5,21 +5,44 @@
 {% block title %}
 Новости
 {% endblock %}
+{% block style %}
+.news {
+margin-top: 5px;
+
+}
+div .news-header {
+padding: 5px;
+background: #ddd;
+border-bottom: 1px solid #ccc;
+}
+.news-title {
+ 
+}
+.news-date {
+
+}
+.news-body {
+}
+{% endblock %}
 {% block content_title %}
 Новости
 {% endblock %}
 {% block content %}
-<table>
-    <col />
-    <col width="120" />
     {% for n in news %}
-    <tr><th><h2>{{ n.title }}</h2></th><td align="center"><h5>{{n.date_add|ru_strftime:"%d %B %Y"}}</h5></td></tr>
-    <tr><td colspan="2">
-            {{n.body_html|typographus|safe}}
-    <br/>
-    </td></tr>
+    <div class="news">
+        <div class="news-header">
+            <span class="float-right news-date">
+                {{n.date_add|ru_strftime:"%d %B %Y"}}
+            </span>
+            <span class="news-title">
+                <h3>{{ n.title }}</h3>
+            </span>
+        </div>
+        <div>
+           {{n.body_html|typographus|safe}}
+        </div>
+    </div>
     
     {% endfor%}
-</table>
 
 {% endblock%}

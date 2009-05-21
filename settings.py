@@ -2,7 +2,7 @@
 import os
 pwd = os.sys.path[0]
 pathsep = os.path.sep
-os.sys.path += (pwd+'/pylib',)
+os.sys.path += (pwd+pathsep+'pylib',)
 
 
 
@@ -70,6 +70,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 

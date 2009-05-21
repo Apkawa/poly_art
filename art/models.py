@@ -26,6 +26,8 @@ class Section(models.Model):
     slug = models.SlugField(blank=True)
     body_wiki = models.TextField(blank=True)
     body_html = models.TextField(blank=True, editable=False)
+    footer_wiki = models.TextField(blank=True)
+    footer_html = models.TextField(blank=True, editable=False)
     position = models.IntegerField(default=0)
     parent = models.ForeignKey('self', null=True, blank=True)
     type_section = models.SlugField(max_length=2, choices=TYPE, blank=True)
@@ -33,6 +35,7 @@ class Section(models.Model):
         return self.name
     def save(self):
         self.body_html = make_text(self.body_wiki)
+        self.footer_html = make_text(self.footer_wiki)
         self.slug = title2slug( self.name)
         super(Section, self).save()
 
@@ -68,19 +71,34 @@ class News(models.Model):
 
 class Product(models.Model):
     name = models.CharField( max_length=256)
-    desc = models.TextField( max_length=1024)
+    desc_wiki = models.TextField( max_length=1024, blank=True)
+    desc_html = models.TextField( max_length=1024, blank=True, editable=False)
     cell = models.FloatField(default=0)
-    currency = models.ForeignKey('Currency')
+    currency = models.ForeignKey('Currency', blank=True, null=True)
     #image = models.ImageField(upload_to = '/images/price/')
     image_ext_url = models.URLField(blank=True)
     image_ext_url_thumb = models.URLField(blank=True)
-    section = models.ManyToManyField('Section')
+    #section = models.ManyToManyField('Section')
+    section = models.ForeignKey('Section')
     manufacturer = models.ForeignKey( 'Manufacturer', null=True, blank=True)
     type_product = models.ForeignKey( 'TypeProduct', null=True, blank=True)
     date_add = models.DateTimeField( auto_now_add=True)
     date_update = models.DateTimeField( auto_now=True, auto_now_add=True)
     def __unicode__(self):
         return self.name
+    def save(self):
+        self.desc_html = make_text(self.desc_wiki)
+        '''
+        if self.image_ext_url:
+            import uimge
+            upl = uimge.Uimge()
+            upl.set_host('r_radikal')
+            print self.image_ext_url
+            upl.upload( str(self.image_ext_url ) )
+            self.image_ext_url = upl.img_url
+            self.image_ext_url_thumb = upl.img_thumb_url
+        '''
+        super(Product, self).save()
 
 class Currency( models.Model):
     "This valutas"
@@ -131,6 +149,6 @@ class Application( models.Model):
     datetime_add = models.DateTimeField( auto_now_add= True)
 
     sending = models.BooleanField( default=False)
-    datetime_sending = models.DateTimeField( blank=True)
+    datetime_sending = models.DateTimeField( blank=True, null=True)
 
 

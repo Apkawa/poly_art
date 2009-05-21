@@ -11,6 +11,7 @@
 {% block content_title %}
 {{ section.name }}
 {% endblock %}
+{% comment %}
 {% block sidebar_price_title %}
 <h5>{{ section.name }}</h5>
 {%endblock%}
@@ -21,26 +22,43 @@
 {% endfor %}
 </ul>
 {%endblock%}
+{% endcomment %}
 {% block content %}
 {{ section.body_html|safe }}
+
 <table>
-    {% for manuf in manufs %}
-    <tr>
-        <th colspan="2"><a name="{{manuf.slug}}">{{manuf.name}}</a></th>
-    </tr>
-    {% for product in manuf.product_set.all %}
-    <tr>
-        <td>
-            <p><img src="{{ product.image_ext_url_thumb }}" alt="{{ product.name }}"/></p>
-        </td>
-        <td>
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.desc }}</p>
-            <h5 class="align-right">{{ product.cell }} {{ product.currency.display }}</h5>
-        </td>
-    </tr>
-    {% endfor %}
-    {% endfor%}
+        {% for p in products %}
+        {% comment %}
+        {% if manufs %}
+        <tr>
+            {% if product.0 %}
+            <th colspan="2"><a name="{{product.0.slug}}">{{product.0.name}}</a></th>
+            {% else %}
+                {% if product.1 %}
+                    <th colspan="2"><a name="other">Разное</a></th>
+                {% endif %}
+            {% endif %}
+        </tr>
+        {%endif%}
+        {% endcomment %}
+
+
+            <tr>
+                <td>
+                {% if p.image_ext_url_thumb %}
+                    <p><img src="{{ p.image_ext_url_thumb }}" alt="{{ p.manufacturer|default:"" }}{{ p.name }}" width="200"/></p>
+                {% endif %}
+                </td>
+                <td>
+                    <h3>{{ p.manufacturer|default:"" }} {{ p.name }}</h3>
+                    <p>{{ p.desc_html|safe }}</p>
+                    {% if p.cell %}
+                        <h5 class="align-right">{{ p.cell }} {{ p.currency.display }}</h5>
+                    {% endif %}
+                </td>
+            </tr>
+         {% endfor %}
 </table>
+{{ section.footer_html|safe }}
 
 {% endblock%}

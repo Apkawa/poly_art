@@ -6,8 +6,14 @@ admin.site.register( Product)
 admin.site.register( Page)
 admin.site.register( Currency)
 
+class ProductInline( admin.StackedInline ):
+    model = Product
+    extra = 3
+
 class SectionAdmin(admin.ModelAdmin):
     list_display = [ 'name','slug','type_section','parent','position']
+    inlines = [ ProductInline , ]
+
 admin.site.register( Section, SectionAdmin )
 
 admin.site.register( Manufacturer)

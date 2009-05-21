@@ -1,8 +1,8 @@
-{%load menu%}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
 <head>
+{%load menu%}
+{% spaceless %}
 
 <meta name="Description" content="Политехник Art.  Аренда проекторов, проектор для свадьбы" />
 <meta name="Keywords" content="свадьба, проектор, слайды, экраны" />
@@ -11,11 +11,24 @@
 <meta name="Author" content="Apkawa apkawa@gmail.com" />
 <meta name="Robots" content="index,follow" />
 
-<link rel="stylesheet" href="/static/css/MarketPlace.css" type="text/css" />
+<link rel="stylesheet" href="/static/css/MarketPlace.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="/static/css/design.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="/static/css/print.css" type="text/css" media="print"/>
 
 <title>Политехник Art - {% block title %}Новости{% endblock%}</title>
 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7049912-5");
+pageTracker._trackPageview();
+} catch(err) {}</script>
 
+{%comment%}
+<!--
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/jquery.jqDock.js"></script>
 <script type="text/javascript">
@@ -41,30 +54,15 @@
 
         //{% endblock %}
 </script>
+-->
+{% endcomment %}
 
 <style type="text/css" media="screen">
-    #header-logo{
-     margin-left: 35px;
-     padding-top: 5px;
-     color: #444;
-    }
-    #slidemenu{
-        text-align: center;
-        margin-left: -15px;
-    }
-    #slidemenu ul {
-        list-style: none;
-    }
-    #slidemenu ul li{
-        margin-left: 5px;
-        margin-top: 5px;
-        float: left;
-    }
-    #contact {
-        float: right;
-        text-align: right;
-        margin-right: 22px;
-        }
+#contact {
+}
+
+{% block style %}
+{% endblock %}
     
 </style>
 
@@ -78,19 +76,21 @@
 	<!--header -->
 	<div id="header">			
         <div id="header-logo">
-            <a href="">Политехник Art</a> - прокат оборудования для презентаций
+            <a href="/">Политехник Art</a> - прокат оборудования для презентаций
         </div>
 				
         <div id="header-links">
 		<p>
+        	<a href="/">В начало</a> |
 			<a href="{% url art.views.page "o-kompanii" %}">О компании</a> | 
 			<a href="{% url art.views.news %}">Новости</a>  | 	
-			<a href="#{# url art.views.price #}">Прайс-лист</a> | 
-            <a href="{% url art.views.page "kontaktyi" %}">Контакты</a>
+            <a href="{% url art.views.page "kontaktyi" %}">Как нас найти</a> | 
+            <a href="{% url art.views.application %}">Обратная связь</a>
 		</p>		
     </div>		
 		
 	</div>
+    {% comment %}
 	<!-- header ends -->					
 	<!--	
 	<div id="header-photo">
@@ -113,41 +113,50 @@
 		</ul>
 </div>	
 -->
+{% endcomment %}
 <!-- navigation ends-->	
     <div id="slidemenu">
         <ul>
             </li>
-            <a href="{% url art.views.price "multimedia-proektoryi"%}">
+            <a href="{% url art.views.price "proektoryi"%}">
                 <li>
-                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                <img src="http://s53.radikal.ru/i139/0905/61/dc4666c839a9t.jpg" height="100" /><br/>
                 Аренда проекторов
                 </li>
             </a>
             </li>
             <a href="{% url art.views.price "ekranyi"%}">
                 <li>
-                <img src="http://s55.radikal.ru/i150/0904/24/3906d5eb6fc7t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                <img src="http://s55.radikal.ru/i150/0904/24/3906d5eb6fc7t.jpg" height="100" /><br/>
                 Аренда экранов
                 </li>
             </a>
             </li>
             <a href="{% url art.views.price "zvuk"%}">
                 <li>
-                <img src="http://s39.radikal.ru/i086/0902/42/0b8aed035a63t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                <img src="http://s39.radikal.ru/i084/0904/b2/9516fd07adfct.jpg" height="100" /><br/>
                 Аренда звука
                 </li>
             </a>
             </li>
             <a href="{% url art.views.price "svet"%}">
                 <li>
-                <img src="http://s47.radikal.ru/i118/0905/98/360b2640b574t.jpg" height="150" width="{% widthratio this_value 100 100 %}" /><br/>
+                <img src="http://i027.radikal.ru/0905/e1/489955311acdt.jpg" height="100" /><br/>
                 Аренда света
+                </li>
+            </a>
+            <a href="{% url art.views.price "drugoe" %}">
+                <li>
+                <img src="http://s55.radikal.ru/i149/0905/56/fc0d66b693f3t.jpg" height="100" /><br/>
+                Аренда другого<br/> оборудования
                 </li>
             </a>
         </ul>
         <div id="contact">
-        <h1>(812) 458 45 26</h1>
+        <h1>(812) 312-42-38</h1>
         <h3><a href="mailto:polytechnik@bk.ru">polytechnik@bk.ru</a></h3>
+        <b>Дежурный телефон</b>
+        <h1>8 921 965 28 03</h1>
         </div>
         
     </div>
@@ -161,6 +170,14 @@
             <ul class="sidemenu">
                 {% main_right_menu %}
             </ul>
+                <h3>Другие проекты</h3>
+            <ul class="sidemenu">
+                        <li><a href="#">Продажа проекторов</a></li>
+                        <li><a href="#">Продажа экранов</a></li>
+                        <li><a href="#">Продажа звукового оборудования</a></li>
+                        <li><a href="#">Продажа маркерных и меловых досок</a></li>
+            </ul>
+            <a href="#">Необычные подарки</a>
 
             {% block sidebar_price_title%}
             {%endblock%}
@@ -171,6 +188,9 @@
 		</div>
 		
         <div id="main">
+        <div class="float-left" id="contact">
+        <a href="{% url art.views.application %}">Заказать аренду</a>
+        </div>
 
             <h1>{%block content_title%}
                 Заголовок страницы
@@ -206,3 +226,4 @@
 
 </body>
 </html>
+{% endspaceless %}
